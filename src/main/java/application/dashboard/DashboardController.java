@@ -125,7 +125,5 @@ public class DashboardController extends BaseController {
         shortTableRowList.add(shortTableRow);
 
         shortTeamView.setShortTableRowMap(shortTableRowList);
-
-//        shortTeamViewRepository.save(shortTeamView);
     }
 }

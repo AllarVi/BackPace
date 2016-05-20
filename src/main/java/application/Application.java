@@ -182,26 +182,36 @@ public class Application {
         Goal goal1 = new Goal();
         goal1.setCategory("gymnastics");
         goal1.setTitle("Salto backward");
+        goal1.setPoints(50);
 
 
         Goal goal2 = new Goal();
         goal2.setCategory("gymnastics");
         goal2.setTitle("Round off");
+        goal2.setPoints(30);
 
 
         Goal goal3 = new Goal();
         goal3.setCategory("gymnastics");
         goal3.setTitle("Flic flac");
+        goal3.setPoints(50);
 
 
         Goal goal4 = new Goal();
         goal4.setCategory("cheerleading");
         goal4.setTitle("Toss cupie");
+        goal4.setPoints(80);
 
 
         Goal goal5 = new Goal();
         goal5.setCategory("cheerleading");
         goal5.setTitle("Walk-in-hands");
+        goal5.setPoints(10);
+
+        Goal goal6 = new Goal();
+        goal6.setCategory("cheerleading");
+        goal6.setTitle("Liberty");
+        goal6.setPoints(50);
 
         List<Goal> goals = new ArrayList<>();
         goals.add(goal1);
@@ -209,6 +219,7 @@ public class Application {
         goals.add(goal3);
         goals.add(goal4);
         goals.add(goal5);
+        goals.add(goal6);
 
         return goals;
     }

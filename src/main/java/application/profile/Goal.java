@@ -26,6 +26,8 @@ public class Goal implements Serializable {
 
     private boolean isAchieved;
 
+    private Integer points;
+
     public Goal() {
     }
 
@@ -67,5 +69,13 @@ public class Goal implements Serializable {
 
     public void setAchieved(boolean achieved) {
         isAchieved = achieved;
+    }
+
+    public Integer getPoints() {
+        return points;
+    }
+
+    public void setPoints(Integer points) {
+        this.points = points;
     }
 }

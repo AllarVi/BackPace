@@ -42,10 +42,19 @@ public class UserController extends BaseController {
         PaceUser updatedPaceUserAsObject = getUpdatedPaceUserAsObject(updatedPaceUser);
 
         if (currentPaceUser != null) {
-            updatedPaceUserAsObject.setId(currentPaceUser.getId());
+            updateCurrentPaceUser(currentPaceUser, updatedPaceUserAsObject);
+
+            return userRepository.save(currentPaceUser);
         }
 
         return userRepository.save(updatedPaceUserAsObject);
+    }
+
+    private void updateCurrentPaceUser(PaceUser currentPaceUser, PaceUser updatedPaceUserAsObject) {
+        currentPaceUser.setName(updatedPaceUserAsObject.getName());
+        currentPaceUser.setAuthResponse(updatedPaceUserAsObject.getAuthResponse());
+        currentPaceUser.setAccessToken(updatedPaceUserAsObject.getAccessToken());
+        currentPaceUser.setPicture(updatedPaceUserAsObject.getPicture());
     }
 
     private PaceUser getUpdatedPaceUserAsObject(@RequestBody String updatedPaceUser) {
