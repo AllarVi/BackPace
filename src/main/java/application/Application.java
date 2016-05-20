@@ -4,10 +4,7 @@ import application.profile.Goal;
 import application.profile.GoalRepository;
 import application.profile.Goals;
 import application.profile.GoalsRepository;
-import application.team.ShortTableRow;
-import application.team.ShortTableRowRepository;
-import application.team.ShortTeamView;
-import application.team.ShortTeamViewRepository;
+import application.team.*;
 import application.user.PaceUser;
 import application.user.UserRepository;
 import org.slf4j.Logger;
@@ -32,12 +29,12 @@ import java.util.Map;
 @SpringBootApplication
 public class Application {
 
-    public static final String HTTP_GRAPH_FACEBOOK_COM_ALLAR_PICTURE_TYPE_LARGE = "http://graph.facebook" + "" +
+    private static final String HTTP_GRAPH_FACEBOOK_COM_ALLAR_PICTURE_TYPE_LARGE = "http://graph.facebook" + "" +
             ".com/1273703759309879/picture?type=large";
-    public static final String ALLAR_ACCESS_TOKEN =
+    private static final String ALLAR_ACCESS_TOKEN =
             "EAAD08lC2fhMBAIWW7X6j85X0s8IREqlmaXlV47g5NZBOsk22L616ooPDtmUCD7Rup7vVkmKAFP5k5y5zNbf0ZBZB0XGU2fbvaUx7uUxLfY3lStaOyCoo3SiVn9kNGTW5NIon6JC2BNspoLex6NfCBZBkgEZCAyfn0JbICsgpuLu0FTO2zcEsiULORo2nnZBLMZD";
 
-    public static final String ALLAR_USER_ID = "1273703759309879";
+    private static final String ALLAR_USER_ID = "1273703759309879";
 
 
     public static String ROOT = "upload-dir";
@@ -53,8 +50,8 @@ public class Application {
      */
     @Bean
     public CommandLineRunner user(UserRepository userRepository, ShortTableRowRepository shortTableRowRepository,
-                                  ShortTeamViewRepository shortTeamViewRepository, GoalRepository goalRepository,
-                                  GoalsRepository goalsRepository) {
+                                  GoalRepository goalRepository, GoalsRepository goalsRepository, TeamRepository
+                                              teamRepository) {
         return (args) -> {
             createFileUploadDirectory();
 
@@ -87,29 +84,29 @@ public class Application {
             paceUserAllar.setGoals(goals);
 
 //            @@@@@ Kossurühm @@@@@
-            ShortTeamView shortTeamViewKossuryhm = new ShortTeamView();
-            shortTeamViewKossuryhm.setTeamName("Kossurühm");
+            Team teamKossuryhm = new Team();
+            teamKossuryhm.setTeamName("Kossurühm");
 
             ArrayList<ShortTableRow> shortTableRowsKossuryhm = getShortTableRowsKossyryhm(shortTableRowRepository);
-            List<ShortTableRow> shortTableRowListKossuryhm = new ArrayList<>(shortTableRowsKossuryhm);
-            shortTeamViewKossuryhm.setShortTableRowMap(shortTableRowListKossuryhm);
+            teamKossuryhm.setFullScoresTableList(shortTableRowsKossuryhm);
 
 //            @@@@@ Saltopoisid @@@@@
-            ShortTeamView shortTeamViewSaltopoisid = new ShortTeamView();
-            shortTeamViewSaltopoisid.setTeamName("Saltopoisid");
+            Team teamSaltopoisid = new Team();
+            teamSaltopoisid.setTeamName("Saltopoisid");
 
             ArrayList<ShortTableRow> shortTableRowsSaltopoisid = getShortTableRowsSaltopoisid(shortTableRowRepository);
-            List<ShortTableRow> shortTableRowListSaltopoisid = new ArrayList<>(shortTableRowsSaltopoisid);
-            shortTeamViewSaltopoisid.setShortTableRowMap(shortTableRowListSaltopoisid);
+            teamSaltopoisid.setFullScoresTableList(shortTableRowsSaltopoisid);
 
 //            Save shortTeamView to database
-            shortTeamViewRepository.save(shortTeamViewKossuryhm);
-            shortTeamViewRepository.save(shortTeamViewSaltopoisid);
+            teamRepository.save(teamKossuryhm);
+            teamRepository.save(teamSaltopoisid);
 
 //            Add shortTeamView to user
             List<ShortTeamView> shortTeamViewList = new ArrayList<>();
+            List<Team> teamList = new ArrayList<>();
+            teamList.add(teamSaltopoisid);
 //            shortTeamViewList.add(shortTeamViewKossuryhm);
-            shortTeamViewList.add(shortTeamViewSaltopoisid);
+            paceUserAllar.setTeamList(teamList);
 
             paceUserAllar.setShortTeamViewList(shortTeamViewList);
 
@@ -117,6 +114,9 @@ public class Application {
             userRepository.save(paceUserAllar);
 
             // fetch all customers
+            log.info("Users found with findByFacebookId():");
+            log.info("-------------------------------");
+            log.info(userRepository.findByFacebookId(ALLAR_USER_ID).toString());
             log.info("Users found with findAll():");
             log.info("-------------------------------");
             for (PaceUser paceUser : userRepository.findAll()) {

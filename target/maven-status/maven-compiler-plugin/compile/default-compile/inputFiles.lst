@@ -4,8 +4,10 @@
 /Users/allarviinamae/Workspace/BackPaceV2/src/main/java/application/config/SocialConfig.java
 /Users/allarviinamae/Workspace/BackPaceV2/src/main/java/application/team/ShortTableRow.java
 /Users/allarviinamae/Workspace/BackPaceV2/src/main/java/application/team/ShortTeamView.java
+/Users/allarviinamae/Workspace/BackPaceV2/src/main/java/application/team/TeamRepository.java
 /Users/allarviinamae/Workspace/BackPaceV2/src/main/java/application/team/Team.java
 /Users/allarviinamae/Workspace/BackPaceV2/src/main/java/application/team/ShortTableRowRepository.java
+/Users/allarviinamae/Workspace/BackPaceV2/src/main/java/application/team/TeamController.java
 /Users/allarviinamae/Workspace/BackPaceV2/src/main/java/application/profile/Goal.java
 /Users/allarviinamae/Workspace/BackPaceV2/src/main/java/application/profile/GoalsRepository.java
 /Users/allarviinamae/Workspace/BackPaceV2/src/main/java/application/BaseController.java

@@ -2,6 +2,7 @@ package application.user;
 
 import application.profile.Goals;
 import application.team.ShortTeamView;
+import application.team.Team;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -29,6 +30,9 @@ public class PaceUser implements Serializable {
 
     @OneToOne
     private Goals goals;
+
+    @ElementCollection
+    private List<Team> teamList;
 
     public PaceUser() {
     }
@@ -105,6 +109,14 @@ public class PaceUser implements Serializable {
 
     public void setGoals(Goals goals) {
         this.goals = goals;
+    }
+
+    public List<Team> getTeamList() {
+        return teamList;
+    }
+
+    public void setTeamList(List<Team> teamList) {
+        this.teamList = teamList;
     }
 }
 

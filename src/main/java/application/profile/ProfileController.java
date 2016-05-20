@@ -39,7 +39,7 @@ public class ProfileController extends BaseController {
         Connection<Facebook> connection = getFacebookConnection(token);
 
         if (connection == null) {
-            return new ResponseEntity<>(new PaceUser().getShortTeamViewList(), HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
 
         List<Goal> goalList;

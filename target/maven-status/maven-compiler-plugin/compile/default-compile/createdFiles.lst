@@ -13,7 +13,9 @@ application/user/PaceUser.class
 application/facebook_example/FacebookExampleController.class
 application/user/UserController.class
 application/user/UserRepository.class
+application/team/TeamController.class
 application/profile/Goals.class
+application/team/TeamRepository.class
 application/profile/ProfileController.class
 application/team/Team.class
 application/file_upload/FileUploadController.class

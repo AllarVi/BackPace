@@ -13,17 +13,17 @@ import java.util.List;
 public class ShortTeamView extends Team {
 
     @ElementCollection
-    private List<ShortTableRow> shortTableRowMap;
+    private List<ShortTableRow> shortTableRowList;
 
     public ShortTeamView() {
     }
 
 
-    public List<ShortTableRow> getShortTableRowMap() {
-        return shortTableRowMap;
+    public List<ShortTableRow> getShortTableRowList() {
+        return super.getFullScoresTableList();
     }
 
-    public void setShortTableRowMap(List<ShortTableRow> shortTableRowMap) {
-        this.shortTableRowMap = shortTableRowMap;
+    public void setShortTableRowList(List<ShortTableRow> shortTableRowList) {
+        this.shortTableRowList = shortTableRowList;
     }
 }

@@ -10,7 +10,7 @@ import java.util.List;
  * Represents sports Team/Group.
  */
 @Entity
-public abstract class Team implements Serializable {
+public class Team implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,7 +21,7 @@ public abstract class Team implements Serializable {
     @ElementCollection
     private List<ShortTableRow> fullScoresTableList;
 
-    protected Team() {
+    public Team() {
     }
 
     public String getTeamName() {

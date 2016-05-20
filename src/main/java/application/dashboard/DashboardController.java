@@ -4,8 +4,8 @@ import application.BaseController;
 import application.model.TeamData;
 import application.team.ShortTableRow;
 import application.team.ShortTableRowRepository;
-import application.team.ShortTeamView;
-import application.team.ShortTeamViewRepository;
+import application.team.Team;
+import application.team.TeamRepository;
 import application.user.PaceUser;
 import application.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,26 +30,26 @@ public class DashboardController extends BaseController {
     UserRepository userRepository;
 
     @Autowired
-    ShortTeamViewRepository shortTeamViewRepository;
+    TeamRepository teamRepository;
 
     @Autowired
     ShortTableRowRepository shortTableRowRepository;
 
     @RequestMapping(value = "/api/dashboard")
-    public ResponseEntity<Object> getUserShortTeamView(@RequestParam(value = "facebookId") String facebookId,
+    public ResponseEntity<Object> getUserTeamView(@RequestParam(value = "facebookId") String facebookId,
                                                        @RequestParam(value = "teamView") String teamView,
                                                        @RequestParam(value = "token") String token) {
 
         Connection<Facebook> connection = getFacebookConnection(token);
 
         if (connection == null) {
-            return new ResponseEntity<>(new PaceUser().getShortTeamViewList(), HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
 
         if (teamView.equals("short")) {
             PaceUser paceUser = getPaceUser(facebookId);
 
-            return new ResponseEntity<>(paceUser.getShortTeamViewList(), HttpStatus.OK);
+            return new ResponseEntity<>(paceUser.getTeamList(), HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -65,10 +65,10 @@ public class DashboardController extends BaseController {
         }
 
         if (groups.equals("all")) {
-            List<ShortTeamView> teams = shortTeamViewRepository.findAll();
+            List<Team> teams = teamRepository.findAll();
 
             PaceUser paceUser = userRepository.findByFacebookId(facebookId);
-            List<ShortTeamView> userTeams = paceUser.getShortTeamViewList();
+            List<Team> userTeams = paceUser.getTeamList();
 
 //            Only show user teams he/she is not connected to yet
             teams.removeAll(userTeams);
@@ -91,22 +91,22 @@ public class DashboardController extends BaseController {
         try {
             TeamData teamData = mapFromJson(groupData, TeamData.class);
 
-            ShortTeamView shortTeamView = shortTeamViewRepository.findOne(teamData.getTeamId());
+            Team team = teamRepository.findOne(teamData.getTeamId());
 
             PaceUser paceUser = userRepository.findByFacebookId(facebookId);
 
 //             Add user to selected team!
-            addUserToTeam(shortTeamView, paceUser);
+            addUserToTeam(team, paceUser);
 
-            List<ShortTeamView> shortTeamViews = paceUser.getShortTeamViewList();
+            List<Team> shortTeamViews = paceUser.getTeamList();
 
-            shortTeamViews.add(shortTeamView);
+            shortTeamViews.add(team);
 
-            paceUser.setShortTeamViewList(shortTeamViews);
+            paceUser.setTeamList(shortTeamViews);
 
             userRepository.save(paceUser);
 
-            return new ResponseEntity<>(shortTeamView, HttpStatus.OK);
+            return new ResponseEntity<>(team, HttpStatus.OK);
         } catch (IOException e) {
             e.printStackTrace();
             System.err.println("Mapping team data to object failed!");
@@ -116,14 +116,14 @@ public class DashboardController extends BaseController {
         return new ResponseEntity<>("failed", HttpStatus.OK);
     }
 
-    private void addUserToTeam(ShortTeamView shortTeamView, PaceUser paceUser) {
-        List<ShortTableRow> shortTableRowList = shortTeamView.getShortTableRowMap();
+    private void addUserToTeam(Team team, PaceUser paceUser) {
+        List<ShortTableRow> shortTableRowList = team.getFullScoresTableList();
 
         ShortTableRow shortTableRow = new ShortTableRow(0, paceUser.getName(), "", 0);
         shortTableRowRepository.save(shortTableRow);
 
         shortTableRowList.add(shortTableRow);
 
-        shortTeamView.setShortTableRowMap(shortTableRowList);
+        team.setFullScoresTableList(shortTableRowList);
     }
 }
