@@ -1,8 +1,8 @@
 package application.team;
 
-import javax.persistence.*;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by allarviinamae on 15/05/16.
@@ -13,8 +13,6 @@ import java.util.Map;
 public class ShortTeamView extends Team {
 
     @ElementCollection
-//    @CollectionTable(name="<name_of_join_table>")
-//    @MapKeyColumn(name="user_name")
     private List<ShortTableRow> shortTableRowMap;
 
     public ShortTeamView() {

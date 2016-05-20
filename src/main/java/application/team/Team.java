@@ -1,10 +1,8 @@
 package application.team;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by allarviinamae on 15/05/16.
@@ -19,6 +17,9 @@ public abstract class Team implements Serializable {
     private long id;
 
     private String teamName;
+
+    @ElementCollection
+    private List<ShortTableRow> fullScoresTableList;
 
     protected Team() {
     }
@@ -37,5 +38,13 @@ public abstract class Team implements Serializable {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public List<ShortTableRow> getFullScoresTableList() {
+        return fullScoresTableList;
+    }
+
+    public void setFullScoresTableList(List<ShortTableRow> fullScoresTableList) {
+        this.fullScoresTableList = fullScoresTableList;
     }
 }

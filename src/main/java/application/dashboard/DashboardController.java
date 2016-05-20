@@ -2,6 +2,8 @@ package application.dashboard;
 
 import application.BaseController;
 import application.model.TeamData;
+import application.team.ShortTableRow;
+import application.team.ShortTableRowRepository;
 import application.team.ShortTeamView;
 import application.team.ShortTeamViewRepository;
 import application.user.PaceUser;
@@ -29,6 +31,9 @@ public class DashboardController extends BaseController {
 
     @Autowired
     ShortTeamViewRepository shortTeamViewRepository;
+
+    @Autowired
+    ShortTableRowRepository shortTableRowRepository;
 
     @RequestMapping(value = "/api/dashboard")
     public ResponseEntity<Object> getUserShortTeamView(@RequestParam(value = "facebookId") String facebookId,
@@ -90,6 +95,9 @@ public class DashboardController extends BaseController {
 
             PaceUser paceUser = userRepository.findByFacebookId(facebookId);
 
+//             Add user to selected team!
+            addUserToTeam(shortTeamView, paceUser);
+
             List<ShortTeamView> shortTeamViews = paceUser.getShortTeamViewList();
 
             shortTeamViews.add(shortTeamView);
@@ -106,5 +114,18 @@ public class DashboardController extends BaseController {
 
 
         return new ResponseEntity<>("failed", HttpStatus.OK);
+    }
+
+    private void addUserToTeam(ShortTeamView shortTeamView, PaceUser paceUser) {
+        List<ShortTableRow> shortTableRowList = shortTeamView.getShortTableRowMap();
+
+        ShortTableRow shortTableRow = new ShortTableRow(0, paceUser.getName(), "", 0);
+        shortTableRowRepository.save(shortTableRow);
+
+        shortTableRowList.add(shortTableRow);
+
+        shortTeamView.setShortTableRowMap(shortTableRowList);
+
+//        shortTeamViewRepository.save(shortTeamView);
     }
 }
