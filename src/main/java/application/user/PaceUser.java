@@ -1,5 +1,6 @@
 package application.user;
 
+import application.profile.Goals;
 import application.team.ShortTeamView;
 
 import javax.persistence.*;
@@ -25,6 +26,9 @@ public class PaceUser implements Serializable {
 
     @ElementCollection
     private List<ShortTeamView> shortTeamViewList;
+
+    @OneToOne
+    private Goals goals;
 
     public PaceUser() {
     }
@@ -93,6 +97,14 @@ public class PaceUser implements Serializable {
 
     public void setShortTeamViewList(List<ShortTeamView> shortTeamViewList) {
         this.shortTeamViewList = shortTeamViewList;
+    }
+
+    public Goals getGoals() {
+        return goals;
+    }
+
+    public void setGoals(Goals goals) {
+        this.goals = goals;
     }
 }
 

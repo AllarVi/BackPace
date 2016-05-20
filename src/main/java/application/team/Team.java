@@ -8,6 +8,8 @@ import java.io.Serializable;
 
 /**
  * Created by allarviinamae on 15/05/16.
+ *
+ * Represents sports Team/Group.
  */
 @Entity
 public abstract class Team implements Serializable {

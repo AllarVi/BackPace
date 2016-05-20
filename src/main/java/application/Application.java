@@ -1,5 +1,9 @@
 package application;
 
+import application.profile.Goal;
+import application.profile.GoalRepository;
+import application.profile.Goals;
+import application.profile.GoalsRepository;
 import application.team.ShortTableRow;
 import application.team.ShortTableRowRepository;
 import application.team.ShortTeamView;
@@ -18,13 +22,23 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Spring Boot main application.Application
  */
 @SpringBootApplication
 public class Application {
+
+    public static final String HTTP_GRAPH_FACEBOOK_COM_ALLAR_PICTURE_TYPE_LARGE = "http://graph.facebook" + "" +
+            ".com/1273703759309879/picture?type=large";
+    public static final String ALLAR_ACCESS_TOKEN =
+            "EAAD08lC2fhMBAIWW7X6j85X0s8IREqlmaXlV47g5NZBOsk22L616ooPDtmUCD7Rup7vVkmKAFP5k5y5zNbf0ZBZB0XGU2fbvaUx7uUxLfY3lStaOyCoo3SiVn9kNGTW5NIon6JC2BNspoLex6NfCBZBkgEZCAyfn0JbICsgpuLu0FTO2zcEsiULORo2nnZBLMZD";
+
+    public static final String ALLAR_USER_ID = "1273703759309879";
+
 
     public static String ROOT = "upload-dir";
 
@@ -39,21 +53,38 @@ public class Application {
      */
     @Bean
     public CommandLineRunner user(UserRepository userRepository, ShortTableRowRepository shortTableRowRepository,
-                                  ShortTeamViewRepository shortTeamViewRepository) {
+                                  ShortTeamViewRepository shortTeamViewRepository, GoalRepository goalRepository,
+                                  GoalsRepository goalsRepository) {
         return (args) -> {
-            boolean isDirCreated = new File(ROOT).mkdir();
+            createFileUploadDirectory();
 
-            if (isDirCreated) {
-                System.out.println("Directory created!");
+            PaceUser paceUserAllar = getPaceUserAllar();
+
+//            @@@@@ initGoals @@@@@
+            initGoals(goalRepository);
+
+            Goals goals = new Goals();
+            Map<String, ArrayList<Goal>> goalMap = new HashMap<>();
+
+            ArrayList<Goal> goalArrayList = (ArrayList<Goal>) getInitGoals();
+            ArrayList<Goal> gymnasticsGoals = new ArrayList<>();
+            ArrayList<Goal> cheerleadingGoals = new ArrayList<>();
+
+            for (Goal goal : goalArrayList) {
+                if (goal.getCategory().equals("gymnastics")) {
+                    gymnasticsGoals.add(goal);
+                } else if (goal.getCategory().equals("cheerleading")) {
+                    cheerleadingGoals.add(goal);
+                }
             }
 
-            PaceUser paceUserAllar = new PaceUser("Allar", "1273703759309879");
-            paceUserAllar.setAccessToken
-                    ("EAAD08lC2fhMBAIWW7X6j85X0s8IREqlmaXlV47g5NZBOsk22L616ooPDtmUCD7Rup7vVkmKAFP5k5y5zNbf0ZBZB0XGU2fbvaUx7uUxLfY3lStaOyCoo3SiVn9kNGTW5NIon6JC2BNspoLex6NfCBZBkgEZCAyfn0JbICsgpuLu0FTO2zcEsiULORo2nnZBLMZD");
+            goalMap.put("gymnastics", gymnasticsGoals);
+            goalMap.put("cheerleading", cheerleadingGoals);
+            goals.setGoalMap(goalMap);
 
-//            Create shortTableRows with mock data and save to database
+            goalsRepository.save(goals);
 
-//            Create map out of shortTableRows
+            paceUserAllar.setGoals(goals);
 
 //            @@@@@ Kossurühm @@@@@
             ShortTeamView shortTeamViewKossuryhm = new ShortTeamView();
@@ -95,6 +126,27 @@ public class Application {
         };
     }
 
+    private PaceUser getPaceUserAllar() {
+        PaceUser paceUserAllar = new PaceUser("Allar", ALLAR_USER_ID);
+        paceUserAllar.setAccessToken(ALLAR_ACCESS_TOKEN);
+
+        paceUserAllar.setPicture(HTTP_GRAPH_FACEBOOK_COM_ALLAR_PICTURE_TYPE_LARGE);
+        return paceUserAllar;
+    }
+
+    private void createFileUploadDirectory() {
+        boolean isDirCreated = new File(ROOT).mkdir();
+
+        if (isDirCreated) {
+            System.out.println("Directory created!");
+        }
+    }
+
+    private void initGoals(GoalRepository goalRepository) {
+        List<Goal> initGoals = getInitGoals();
+        initGoals.forEach(goalRepository::save);
+    }
+
     private ArrayList<ShortTableRow> getShortTableRowsKossyryhm(ShortTableRowRepository shortTableRowRepository) {
         ShortTableRow shortTableRow1 = new ShortTableRow(1, "Marin", "Gold", 1270);
         ShortTableRow shortTableRow2 = new ShortTableRow(2, "Marianne", "Gold", 1250);
@@ -123,6 +175,42 @@ public class Application {
         shortTableRows.forEach(shortTableRowRepository::save);
 
         return shortTableRows;
+    }
+
+    private List<Goal> getInitGoals() {
+
+        Goal goal1 = new Goal();
+        goal1.setCategory("gymnastics");
+        goal1.setTitle("Salto backward");
+
+
+        Goal goal2 = new Goal();
+        goal2.setCategory("gymnastics");
+        goal2.setTitle("Round off");
+
+
+        Goal goal3 = new Goal();
+        goal3.setCategory("gymnastics");
+        goal3.setTitle("Flic flac");
+
+
+        Goal goal4 = new Goal();
+        goal4.setCategory("cheerleading");
+        goal4.setTitle("Toss cupie");
+
+
+        Goal goal5 = new Goal();
+        goal5.setCategory("cheerleading");
+        goal5.setTitle("Walk-in-hands");
+
+        List<Goal> goals = new ArrayList<>();
+        goals.add(goal1);
+        goals.add(goal2);
+        goals.add(goal3);
+        goals.add(goal4);
+        goals.add(goal5);
+
+        return goals;
     }
 
     //    Required to enable cross-origin resource sharing
