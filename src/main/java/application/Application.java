@@ -4,7 +4,10 @@ import application.profile.Goal;
 import application.profile.GoalRepository;
 import application.profile.Goals;
 import application.profile.GoalsRepository;
-import application.team.*;
+import application.team.ShortTableRow;
+import application.team.ShortTableRowRepository;
+import application.team.Team;
+import application.team.TeamRepository;
 import application.user.PaceUser;
 import application.user.UserRepository;
 import org.slf4j.Logger;
@@ -83,6 +86,27 @@ public class Application {
 
             paceUserAllar.setGoals(goals);
 
+//            @@@@@ Võrgurühm @@@@@
+            Team teamV6rguryhm = new Team();
+            teamV6rguryhm.setTeamName("Võrgurühm");
+
+            ArrayList<ShortTableRow> shortTableRowsV6rguryhm = getShortTableRowsV6rguryhm();
+            teamV6rguryhm.setFullScoresTableList(shortTableRowsV6rguryhm);
+
+//            @@@@@ Harrastajad @@@@@
+            Team teamHarrastajad = new Team();
+            teamHarrastajad.setTeamName("Harrastajad");
+
+            ArrayList<ShortTableRow> shortTableRowsHarrastajad = getShortTableRowsHarrastajad();
+            teamHarrastajad.setFullScoresTableList(shortTableRowsHarrastajad);
+
+//            @@@@@ J2relkasv @@@@@
+            Team teamJ2relkasv = new Team();
+            teamJ2relkasv.setTeamName("Järelkasv");
+
+            ArrayList<ShortTableRow> shortTableRowsJ2relkasv = getShortTableRowsJ2relkasv();
+            teamJ2relkasv.setFullScoresTableList(shortTableRowsJ2relkasv);
+
 //            @@@@@ Kossurühm @@@@@
             Team teamKossuryhm = new Team();
             teamKossuryhm.setTeamName("Kossurühm");
@@ -97,18 +121,17 @@ public class Application {
             ArrayList<ShortTableRow> shortTableRowsSaltopoisid = getShortTableRowsSaltopoisid(shortTableRowRepository);
             teamSaltopoisid.setFullScoresTableList(shortTableRowsSaltopoisid);
 
-//            Save shortTeamView to database
+//            Save team to database
             teamRepository.save(teamKossuryhm);
             teamRepository.save(teamSaltopoisid);
+            teamRepository.save(teamV6rguryhm);
+            teamRepository.save(teamHarrastajad);
+            teamRepository.save(teamJ2relkasv);
 
-//            Add shortTeamView to user
-            List<ShortTeamView> shortTeamViewList = new ArrayList<>();
+//            Add to user to team
             List<Team> teamList = new ArrayList<>();
             teamList.add(teamSaltopoisid);
-//            shortTeamViewList.add(shortTeamViewKossuryhm);
             paceUserAllar.setTeamList(teamList);
-
-            paceUserAllar.setShortTeamViewList(shortTeamViewList);
 
 //            Save user to database
             userRepository.save(paceUserAllar);
@@ -124,6 +147,21 @@ public class Application {
             }
             log.info("");
         };
+    }
+
+    private ArrayList<ShortTableRow> getShortTableRowsJ2relkasv() {
+
+        return new ArrayList<>();
+    }
+
+    private ArrayList<ShortTableRow> getShortTableRowsHarrastajad() {
+
+        return new ArrayList<>();
+    }
+
+    private ArrayList<ShortTableRow> getShortTableRowsV6rguryhm() {
+
+        return new ArrayList<>();
     }
 
     private PaceUser getPaceUserAllar() {
