@@ -20,7 +20,7 @@ public class UserController extends BaseController {
     UserRepository userRepository;
 
     @RequestMapping(value = "/api/user", method = RequestMethod.GET)
-    public ResponseEntity<PaceUser> getUser(@RequestParam(value = "facebookId", required = false) String facebookId) {
+    public ResponseEntity<PaceUser> getUser(@RequestParam(value = FACEBOOK_ID, required = false) String facebookId) {
         if (facebookId != null) {
             return new ResponseEntity<>(getPaceUser(facebookId), HttpStatus.OK);
         }

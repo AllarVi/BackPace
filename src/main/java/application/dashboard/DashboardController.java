@@ -36,9 +36,8 @@ public class DashboardController extends BaseController {
     ShortTableRowRepository shortTableRowRepository;
 
     @RequestMapping(value = "/api/dashboard")
-    public ResponseEntity<Object> getUserTeamView(@RequestParam(value = "facebookId") String facebookId,
-                                                       @RequestParam(value = "teamView") String teamView,
-                                                       @RequestParam(value = "token") String token) {
+    public ResponseEntity<Object> getUserTeamView(@RequestParam(value = FACEBOOK_ID) String facebookId, @RequestParam
+            (value = "teamView") String teamView, @RequestParam(value = TOKEN) String token) {
 
         Connection<Facebook> connection = getFacebookConnection(token);
 
@@ -55,8 +54,8 @@ public class DashboardController extends BaseController {
     }
 
     @RequestMapping(value = "/api/dashboard/join_group")
-    public ResponseEntity<Object> getGroups(@RequestParam(value = "facebookId") String facebookId, @RequestParam
-            (value = "token") String token, @RequestParam(value = "groups") String groups) {
+    public ResponseEntity<Object> getGroups(@RequestParam(value = FACEBOOK_ID) String facebookId, @RequestParam(value
+            = TOKEN) String token, @RequestParam(value = "groups") String groups) {
 
         Connection<Facebook> connection = getFacebookConnection(token);
 
@@ -79,8 +78,8 @@ public class DashboardController extends BaseController {
     }
 
     @RequestMapping(value = "/api/dashboard/join_group", method = RequestMethod.POST)
-    public ResponseEntity<Object> joinTeam(@RequestParam(value = "facebookId") String facebookId, @RequestParam(value
-            = "token") String token, @RequestBody String groupData) {
+    public ResponseEntity<Object> joinTeam(@RequestParam(value = FACEBOOK_ID) String facebookId, @RequestParam(value
+            = TOKEN) String token, @RequestBody String groupData) {
 
         Connection<Facebook> connection = getFacebookConnection(token);
 

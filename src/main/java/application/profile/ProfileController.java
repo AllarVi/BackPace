@@ -31,10 +31,9 @@ public class ProfileController extends BaseController {
     UserRepository userRepository;
 
     @RequestMapping(value = "/api/profile/goal")
-    public ResponseEntity<Object> getUserShortTeamView(@RequestParam(value = "facebookId") String facebookId,
-                                                       @RequestParam(value = "token") String token, @RequestParam
-                                                                   (value = "category", required = false) String
-                                                                   category) {
+    public ResponseEntity<Object> getUserShortTeamView(@RequestParam(value = FACEBOOK_ID) String facebookId,
+                                                       @RequestParam(value = TOKEN) String token, @RequestParam(value
+            = "category", required = false) String category) {
 
         Connection<Facebook> connection = getFacebookConnection(token);
 

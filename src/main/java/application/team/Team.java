@@ -2,6 +2,7 @@ package application.team;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,7 +22,12 @@ public class Team implements Serializable {
     @ElementCollection
     private List<ShortTableRow> fullScoresTableList;
 
+    @ElementCollection
+    private List<CurrentDayAttendance> currentMonthAttendance;
+
     public Team() {
+        currentMonthAttendance = new ArrayList<>();
+        fullScoresTableList = new ArrayList<>();
     }
 
     public String getTeamName() {
@@ -46,5 +52,13 @@ public class Team implements Serializable {
 
     public void setFullScoresTableList(List<ShortTableRow> fullScoresTableList) {
         this.fullScoresTableList = fullScoresTableList;
+    }
+
+    public List<CurrentDayAttendance> getCurrentMonthAttendance() {
+        return currentMonthAttendance;
+    }
+
+    public void setCurrentMonthAttendance(List<CurrentDayAttendance> currentMonthAttendance) {
+        this.currentMonthAttendance = currentMonthAttendance;
     }
 }

@@ -4,10 +4,7 @@ import application.profile.Goal;
 import application.profile.GoalRepository;
 import application.profile.Goals;
 import application.profile.GoalsRepository;
-import application.team.ShortTableRow;
-import application.team.ShortTableRowRepository;
-import application.team.Team;
-import application.team.TeamRepository;
+import application.team.*;
 import application.user.PaceUser;
 import application.user.UserRepository;
 import org.slf4j.Logger;
@@ -54,7 +51,8 @@ public class Application {
     @Bean
     public CommandLineRunner user(UserRepository userRepository, ShortTableRowRepository shortTableRowRepository,
                                   GoalRepository goalRepository, GoalsRepository goalsRepository, TeamRepository
-                                              teamRepository) {
+                                              teamRepository, CurrentDayAttendanceRepository
+                                              currentDayAttendanceRepository) {
         return (args) -> {
             createFileUploadDirectory();
 
@@ -120,6 +118,18 @@ public class Application {
 
             ArrayList<ShortTableRow> shortTableRowsSaltopoisid = getShortTableRowsSaltopoisid(shortTableRowRepository);
             teamSaltopoisid.setFullScoresTableList(shortTableRowsSaltopoisid);
+
+//            @@@@@ initAttendance @@@@@
+            CurrentDayAttendance currentDayAttendance = new CurrentDayAttendance("21", 2, 5);
+            CurrentDayAttendance currentDayAttendance2 = new CurrentDayAttendance("20", 10, 5);
+            currentDayAttendanceRepository.save(currentDayAttendance);
+            currentDayAttendanceRepository.save(currentDayAttendance2);
+
+            List<CurrentDayAttendance> currentMonthAttendanceList = teamSaltopoisid.getCurrentMonthAttendance();
+            currentMonthAttendanceList.add(currentDayAttendance);
+            currentMonthAttendanceList.add(currentDayAttendance2);
+
+            teamSaltopoisid.setCurrentMonthAttendance(currentMonthAttendanceList);
 
 //            Save team to database
             teamRepository.save(teamKossuryhm);

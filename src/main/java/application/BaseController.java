@@ -24,14 +24,18 @@ public class BaseController {
     private static final String clientId = "269321573400083";              // clientId from facebook app
     private static final String clientSecret = "18f4b0c8f3bf178842f92f73b2fc12a4";     // clientSecret
 
+    protected static final String FACEBOOK_ID = "facebookId";
+    protected static final String TOKEN = "token";
+
+
     @Autowired
     UserRepository userRepository;
 
-    protected PaceUser getPaceUser(@RequestParam(value = "facebookId") String facebookId) {
+    protected PaceUser getPaceUser(@RequestParam(value = FACEBOOK_ID) String facebookId) {
         return userRepository.findByFacebookId(facebookId);
     }
 
-    protected Connection<Facebook> getFacebookConnection(@RequestParam("token") String token) {
+    protected Connection<Facebook> getFacebookConnection(@RequestParam(TOKEN) String token) {
         FacebookConnectionFactory facebookConnectionFactory = new FacebookConnectionFactory(clientId, clientSecret);
 
         AccessGrant accessGrant = new AccessGrant(token);
