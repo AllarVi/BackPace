@@ -34,6 +34,9 @@ public class PaceUser implements Serializable {
     @ElementCollection
     private List<Team> teamList;
 
+    @Enumerated(EnumType.STRING)
+    private Sex sex;
+
     public PaceUser() {
     }
 
@@ -117,6 +120,14 @@ public class PaceUser implements Serializable {
 
     public void setTeamList(List<Team> teamList) {
         this.teamList = teamList;
+    }
+
+    public Sex getSex() {
+        return sex;
+    }
+
+    public void setSex(Sex sex) {
+        this.sex = sex;
     }
 }
 
