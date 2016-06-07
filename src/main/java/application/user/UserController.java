@@ -28,58 +28,35 @@ public class UserController extends BaseController {
     }
 
     @RequestMapping(value = "/api/user", method = RequestMethod.POST)
-    public ResponseEntity<PaceUser> saveNewPaceUser(@RequestBody String updatedPaceUser) {
-        if (updatedPaceUser != null) {
-            PaceUser currentPaceUser = getCurrentPaceUserFromJson(updatedPaceUser);
-            PaceUser returnedPaceUser = handlePaceUserSaving(updatedPaceUser, currentPaceUser);
-            return new ResponseEntity<>(returnedPaceUser, HttpStatus.CREATED);
-        }
-
-        return new ResponseEntity<>(new PaceUser(), HttpStatus.OK);
-    }
-
-    private PaceUser handlePaceUserSaving(@RequestBody String updatedPaceUser, PaceUser currentPaceUser) {
-        PaceUser updatedPaceUserAsObject = getUpdatedPaceUserAsObject(updatedPaceUser);
-
-        if (currentPaceUser != null) {
-            updateCurrentPaceUser(currentPaceUser, updatedPaceUserAsObject);
-
-            return userRepository.save(currentPaceUser);
-        }
-
-        return userRepository.save(updatedPaceUserAsObject);
-    }
-
-    private void updateCurrentPaceUser(PaceUser currentPaceUser, PaceUser updatedPaceUserAsObject) {
-        currentPaceUser.setName(updatedPaceUserAsObject.getName());
-        currentPaceUser.setAuthResponse(updatedPaceUserAsObject.getAuthResponse());
-        currentPaceUser.setAccessToken(updatedPaceUserAsObject.getAccessToken());
-        currentPaceUser.setPicture(updatedPaceUserAsObject.getPicture());
-    }
-
-    private PaceUser getUpdatedPaceUserAsObject(@RequestBody String updatedPaceUser) {
-        PaceUser updatedPaceUserObject = null;
+    public ResponseEntity<PaceUser> saveNewPaceUser(@RequestBody String input) {
         try {
-            updatedPaceUserObject = mapFromJson(updatedPaceUser, PaceUser.class);
+            PaceUser updatedPaceUser = mapFromJson(input, PaceUser.class);
+            PaceUser currentPaceUser = userRepository.findByFacebookId(updatedPaceUser.getFacebookId());
+
+            PaceUser resultUser;
+            if (currentPaceUser != null) {
+                updateCurrentPaceUser(currentPaceUser, updatedPaceUser);
+                // Update current user
+                resultUser = userRepository.save(currentPaceUser);
+            } else {
+                resultUser = userRepository.save(updatedPaceUser);
+            }
+
+            return new ResponseEntity<>(resultUser, HttpStatus.CREATED);
         } catch (IOException e) {
-            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        return updatedPaceUserObject;
     }
 
-    private PaceUser getCurrentPaceUserFromJson(@RequestBody String updatedPaceUser) {
-        PaceUser currentPaceUser = null;
-        try {
-            currentPaceUser = userRepository.findByFacebookId(mapFromJson(updatedPaceUser, PaceUser.class)
-                    .getFacebookId());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return currentPaceUser;
+    private void updateCurrentPaceUser(PaceUser currentPaceUser, PaceUser updatedPaceUser) {
+        currentPaceUser.setName(updatedPaceUser.getName());
+        currentPaceUser.setAuthResponse(updatedPaceUser.getAuthResponse());
+        currentPaceUser.setAccessToken(updatedPaceUser.getAccessToken());
+        currentPaceUser.setPicture(updatedPaceUser.getPicture());
     }
 
     @RequestMapping("/api/users")
-    public Iterable<PaceUser> users() {
+    public Iterable<PaceUser> getAllUsers() {
         return userRepository.findAll();
     }
 

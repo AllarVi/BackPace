@@ -2,8 +2,6 @@ package application;
 
 import application.user.PaceUser;
 import application.user.UserRepository;
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.connect.Connection;
@@ -27,7 +25,6 @@ public class BaseController {
     protected static final String FACEBOOK_ID = "facebookId";
     protected static final String TOKEN = "token";
 
-
     @Autowired
     UserRepository userRepository;
 
@@ -41,9 +38,7 @@ public class BaseController {
         AccessGrant accessGrant = new AccessGrant(token);
 
         try {
-            Connection<Facebook> facebookConnection = facebookConnectionFactory.createConnection(accessGrant);
-
-            return facebookConnection;
+            return facebookConnectionFactory.createConnection(accessGrant);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -51,8 +46,7 @@ public class BaseController {
         return null;
     }
 
-    protected <T> T mapFromJson(String json, Class<T> clazz) throws JsonParseException, JsonMappingException,
-            IOException {
+    protected <T> T mapFromJson(String json, Class<T> clazz) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(json, clazz);
     }
