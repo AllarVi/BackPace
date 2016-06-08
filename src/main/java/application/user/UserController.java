@@ -1,6 +1,8 @@
 package application.user;
 
 import application.BaseController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +20,8 @@ public class UserController extends BaseController {
 
     @Autowired
     UserRepository userRepository;
+
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @RequestMapping(value = "/api/user", method = RequestMethod.GET)
     public ResponseEntity<PaceUser> getUser(@RequestParam(value = FACEBOOK_ID, required = false) String facebookId) {
@@ -57,6 +61,7 @@ public class UserController extends BaseController {
 
     @RequestMapping("/api/users")
     public Iterable<PaceUser> getAllUsers() {
+        logger.info("Request made to /api/users");
         return userRepository.findAll();
     }
 
