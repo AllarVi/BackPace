@@ -35,9 +35,9 @@ public class DashboardController extends BaseController {
     @Autowired
     ShortTableRowRepository shortTableRowRepository;
 
-    @RequestMapping(value = "/api/dashboard")
-    public ResponseEntity<Object> getUserTeamView(@RequestParam(value = FACEBOOK_ID) String facebookId, @RequestParam
-            (value = "teamView") String teamView, @RequestParam(value = TOKEN) String token) {
+    @RequestMapping(value = "/api/dashboard", method = RequestMethod.GET)
+    public ResponseEntity<Object> getUserTeamView(@RequestParam(value = FACEBOOK_ID) String facebookId,
+            @RequestParam(value = "teamView") String teamView, @RequestParam(value = TOKEN) String token) {
 
         Connection<Facebook> connection = getFacebookConnection(token);
 
@@ -53,9 +53,9 @@ public class DashboardController extends BaseController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/api/dashboard/join_group")
-    public ResponseEntity<Object> getGroups(@RequestParam(value = FACEBOOK_ID) String facebookId, @RequestParam(value
-            = TOKEN) String token, @RequestParam(value = "groups") String groups) {
+    @RequestMapping(value = "/api/dashboard/join_group", method = RequestMethod.GET)
+    public ResponseEntity<Object> getGroups(@RequestParam(value = FACEBOOK_ID) String facebookId,
+            @RequestParam(value = TOKEN) String token, @RequestParam(value = "groups") String groups) {
 
         Connection<Facebook> connection = getFacebookConnection(token);
 
@@ -69,7 +69,7 @@ public class DashboardController extends BaseController {
             PaceUser paceUser = userRepository.findByFacebookId(facebookId);
             List<Team> userTeams = paceUser.getTeamList();
 
-//            Only show user teams he/she is not connected to yet
+            // Only show user teams he/she is not connected to yet
             teams.removeAll(userTeams);
 
             return new ResponseEntity<>(teams, HttpStatus.OK);
@@ -78,8 +78,8 @@ public class DashboardController extends BaseController {
     }
 
     @RequestMapping(value = "/api/dashboard/join_group", method = RequestMethod.POST)
-    public ResponseEntity<Object> joinTeam(@RequestParam(value = FACEBOOK_ID) String facebookId, @RequestParam(value
-            = TOKEN) String token, @RequestBody String groupData) {
+    public ResponseEntity<Object> joinTeam(@RequestParam(value = FACEBOOK_ID) String facebookId,
+            @RequestParam(value = TOKEN) String token, @RequestBody String teamDataInput) {
 
         Connection<Facebook> connection = getFacebookConnection(token);
 
@@ -88,13 +88,13 @@ public class DashboardController extends BaseController {
         }
 
         try {
-            TeamData teamData = mapFromJson(groupData, TeamData.class);
+            TeamData teamData = mapFromJson(teamDataInput, TeamData.class);
 
             Team team = teamRepository.findOne(teamData.getTeamId());
 
             PaceUser paceUser = userRepository.findByFacebookId(facebookId);
 
-//             Add user to selected team!
+            // Add user to selected team!
             addUserToTeam(team, paceUser);
 
             List<Team> shortTeamViews = paceUser.getTeamList();
@@ -110,7 +110,6 @@ public class DashboardController extends BaseController {
             e.printStackTrace();
             System.err.println("Mapping team data to object failed!");
         }
-
 
         return new ResponseEntity<>("failed", HttpStatus.OK);
     }

@@ -12,10 +12,6 @@ public class TeamData {
     public TeamData() {
     }
 
-    public TeamData(Integer teamId) {
-        this.teamId = teamId;
-    }
-
     public long getTeamId() {
         return teamId;
     }

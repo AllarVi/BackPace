@@ -35,7 +35,7 @@ public class UserController extends BaseController {
     public ResponseEntity<PaceUser> saveNewPaceUser(@RequestBody String input) {
         try {
             PaceUser updatedPaceUser = mapFromJson(input, PaceUser.class);
-            PaceUser currentPaceUser = userRepository.findByFacebookId(updatedPaceUser.getFacebookId());
+            PaceUser currentPaceUser = getPaceUser(updatedPaceUser.getFacebookId());
 
             PaceUser resultUser;
             if (currentPaceUser != null) {

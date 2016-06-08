@@ -20,6 +20,11 @@ import static org.mockito.Mockito.*;
 @Transactional
 public class UserControllerMocksTest extends AbstractControllerTest {
 
+    public static final String TEST_USER_WILLIAM_ACCESS_TOKEN = "EAAD08lC2fhMBAJndhmi8SZCDoFrZAPKBjVZAjYdOjdx9n39StxZAtBtuLKUVEzq6HHTVHZC3B6ZCGymj2iQbLj4PIPNsbkgA7mZAxoFKejCFIuegh6da8keBarMj5yMFCQsS7EiqeZB4oY2nycUl4ZAhx6iGZAPCCNevhdDWhTM5uK0FJspaSNSm8sEeDODaM01SAZD";
+    public static final String TEST_USER_WILLIAM_NAME = "William Wallace";
+    public static final String TEST_USER_WILLIAM_FACEBOOK_ID = "1273703759309879";
+    public static final String TEST_USER_WILLIAM_AUTH_RESPONSE = "success";
+
     @Mock
     private UserRepository userRepository;
 
@@ -61,7 +66,7 @@ public class UserControllerMocksTest extends AbstractControllerTest {
 
     private List<PaceUser> getEntityListStubData() {
 
-        PaceUser paceUserAuthSuccess = getPaceUserAuthSuccess();
+        PaceUser paceUserAuthSuccess = getTestUserWilliam();
 
         ArrayList<PaceUser> entityList = new ArrayList<>();
         entityList.add(paceUserAuthSuccess);
@@ -69,23 +74,21 @@ public class UserControllerMocksTest extends AbstractControllerTest {
         return entityList;
     }
 
-    private PaceUser getPaceUserAuthSuccess() {
+    private PaceUser getTestUserWilliam() {
         PaceUser paceUserAuthSuccess = new PaceUser();
-        paceUserAuthSuccess.setName("William Wallace");
-        paceUserAuthSuccess.setFacebookId("1273703759309879");
-        paceUserAuthSuccess.setAuthResponse("success");
-        paceUserAuthSuccess.setAccessToken(
-                "EAAD08lC2fhMBAJndhmi8SZCDoFrZAPKBjVZAjYdOjdx9n39StxZAtBtuLKUVEzq6HHTVHZC3B6ZCGymj2iQbLj4PIPNsbkgA7mZAxoFKejCFIuegh6da8keBarMj5yMFCQsS7EiqeZB4oY2nycUl4ZAhx6iGZAPCCNevhdDWhTM5uK0FJspaSNSm8sEeDODaM01SAZD");
+        paceUserAuthSuccess.setName(TEST_USER_WILLIAM_NAME);
+        paceUserAuthSuccess.setFacebookId(TEST_USER_WILLIAM_FACEBOOK_ID);
+        paceUserAuthSuccess.setAuthResponse(TEST_USER_WILLIAM_AUTH_RESPONSE);
+        paceUserAuthSuccess.setAccessToken(TEST_USER_WILLIAM_ACCESS_TOKEN);
         return paceUserAuthSuccess;
     }
 
     private PaceUser getCurrentEntity() {
         PaceUser paceUserAuthSuccess = new PaceUser();
         paceUserAuthSuccess.setName("William Wallace Jr.");
-        paceUserAuthSuccess.setFacebookId("1273703759309879");
-        paceUserAuthSuccess.setAuthResponse("success");
-        paceUserAuthSuccess.setAccessToken(
-                "EAAD08lC2fhMBAJndhmi8SZCDoFrZAPKBjVZAjYdOjdx9n39StxZAtBtuLKUVEzq6HHTVHZC3B6ZCGymj2iQbLj4PIPNsbkgA7mZAxoFKejCFIuegh6da8keBarMj5yMFCQsS7EiqeZB4oY2nycUl4ZAhx6iGZAPCCNevhdDWhTM5uK0FJspaSNSm8sEeDODaM01SAZD");
+        paceUserAuthSuccess.setFacebookId(TEST_USER_WILLIAM_FACEBOOK_ID);
+        paceUserAuthSuccess.setAuthResponse(TEST_USER_WILLIAM_AUTH_RESPONSE);
+        paceUserAuthSuccess.setAccessToken(TEST_USER_WILLIAM_ACCESS_TOKEN);
         return paceUserAuthSuccess;
     }
 
@@ -122,7 +125,7 @@ public class UserControllerMocksTest extends AbstractControllerTest {
     public void testCreatePaceUser() throws Exception {
 
         // Create some test data
-        PaceUser entity = getPaceUserAuthSuccess();
+        PaceUser entity = getTestUserWilliam();
 
         // Stub the UserRepository.save method return value
         when(userRepository.save(any(PaceUser.class))).thenReturn(entity);
@@ -156,7 +159,7 @@ public class UserControllerMocksTest extends AbstractControllerTest {
     public void testSaveNewUser() throws Exception {
 
         // Create some test data
-        PaceUser entity = getPaceUserAuthSuccess();
+        PaceUser entity = getTestUserWilliam();
         Long id = 1L;
 
         // Stub the UserRepository.save method return value
@@ -192,7 +195,7 @@ public class UserControllerMocksTest extends AbstractControllerTest {
     public void testUpdateUser() throws Exception {
 
         // Create some test data
-        PaceUser entity = getPaceUserAuthSuccess();
+        PaceUser entity = getTestUserWilliam();
         PaceUser currentEntity = getCurrentEntity();
         Long id = 1L;
 
@@ -230,7 +233,7 @@ public class UserControllerMocksTest extends AbstractControllerTest {
     public void testGetUserFacebookId() throws Exception {
 
         // Create some test data
-        PaceUser entity = getPaceUserAuthSuccess();
+        PaceUser entity = getTestUserWilliam();
 
         // Stub the UserRepository.save method return value
         when(userRepository.findByFacebookId(entity.getFacebookId())).thenReturn(entity);

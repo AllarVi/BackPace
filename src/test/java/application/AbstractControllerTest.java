@@ -65,8 +65,7 @@ public abstract class AbstractControllerTest extends AbstractTest {
      * @throws JsonMappingException Thrown if an error occurs while mapping.
      * @throws IOException          Thrown if an error occurs while mapping.
      */
-    protected <T> T mapFromJson(String json, Class<T> clazz) throws JsonParseException,
-            JsonMappingException, IOException {
+    protected <T> T mapFromJson(String json, Class<T> clazz) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(json, clazz);
     }
