@@ -6,6 +6,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.social.connect.Connection;
+import org.springframework.social.facebook.api.Facebook;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -24,9 +26,19 @@ public class UserController extends BaseController {
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @RequestMapping(value = "/api/user", method = RequestMethod.GET)
-    public ResponseEntity<PaceUser> getUser(@RequestParam(value = FACEBOOK_ID, required = false) String facebookId) {
+    public ResponseEntity<PaceUser> getUser(@RequestParam(value = FACEBOOK_ID, required = false) String facebookId,
+                                            @RequestParam(value = TOKEN) String token) {
+        Connection<Facebook> connection = getFacebookConnection(token);
+
+        if (connection == null) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+
         if (facebookId != null) {
-            return new ResponseEntity<>(getPaceUser(facebookId), HttpStatus.OK);
+            PaceUser currentPaceUser = getPaceUser(facebookId);
+            currentPaceUser.setAccessToken(token);
+            PaceUser updatedPaceUser = userRepository.save(currentPaceUser);
+            return new ResponseEntity<>(updatedPaceUser, HttpStatus.OK);
         }
         return new ResponseEntity<>(new PaceUser(), HttpStatus.OK);
     }

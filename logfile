@@ -1,0 +1,71 @@
+LOG:  database system was shut down at 2017-04-21 19:31:20 EEST
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  autovacuum launcher started
+LOG:  database system is ready to accept connections
+FATAL:  role "allar" does not exist
+FATAL:  database "allarviinamae" does not exist
+FATAL:  database "allarviinamae" does not exist
+FATAL:  database "allarviinamae" does not exist
+FATAL:  database "allarviinamae" does not exist
+FATAL:  database "allarviinamae" does not exist
+FATAL:  role "allar" does not exist
+FATAL:  role "postgres" does not exist
+FATAL:  role "postgres" does not exist
+ERROR:  syntax error at or near "createdb" at character 1
+STATEMENT:  createdb allarviinamae
+	CREATE DATABASE allarviinamae;
+FATAL:  database "backpacedb1" does not exist
+FATAL:  database "backpacedb1" does not exist
+FATAL:  database "backpacedb1" does not exist
+FATAL:  database "backpacedb1" does not exist
+FATAL:  role "allar" does not exist
+ERROR:  relation "goals_goal_map" does not exist
+STATEMENT:  alter table goals_goal_map drop constraint if exists FK_36dwa6kn8weo867lsgmfnb0tb
+ERROR:  relation "pace_user" does not exist
+STATEMENT:  alter table pace_user drop constraint if exists FK_q9bvqsu6tv0dy35crwhqpmhq7
+ERROR:  relation "pace_user_short_team_view_list" does not exist
+STATEMENT:  alter table pace_user_short_team_view_list drop constraint if exists FK_mku4i4xtmkp7ixqel83bplwww
+ERROR:  relation "pace_user_short_team_view_list" does not exist
+STATEMENT:  alter table pace_user_short_team_view_list drop constraint if exists FK_bpyg1sia5j3f4u2qiouhttv64
+ERROR:  relation "pace_user_team_list" does not exist
+STATEMENT:  alter table pace_user_team_list drop constraint if exists FK_jeunujkqo84qxe57j31kdu3jy
+ERROR:  relation "pace_user_team_list" does not exist
+STATEMENT:  alter table pace_user_team_list drop constraint if exists FK_8twxsvaaqf1gisrhm4m78t25x
+ERROR:  relation "team_current_month_attendance" does not exist
+STATEMENT:  alter table team_current_month_attendance drop constraint if exists FK_ci6johu7p80vw1gxv9ncj1yry
+ERROR:  relation "team_current_month_attendance" does not exist
+STATEMENT:  alter table team_current_month_attendance drop constraint if exists FK_1843ryvwv9t10el21aylkt4kq
+ERROR:  relation "team_full_scores_table_list" does not exist
+STATEMENT:  alter table team_full_scores_table_list drop constraint if exists FK_21nm9f8svwythra7loo1jgcax
+ERROR:  relation "team_full_scores_table_list" does not exist
+STATEMENT:  alter table team_full_scores_table_list drop constraint if exists FK_hqt3p3ms6568fmaoy7k57ji9d
+ERROR:  relation "team_short_table_row_list" does not exist
+STATEMENT:  alter table team_short_table_row_list drop constraint if exists FK_98s4vmv7wtx4l81s5de85g20k
+ERROR:  relation "team_short_table_row_list" does not exist
+STATEMENT:  alter table team_short_table_row_list drop constraint if exists FK_1oichjtgfcalpmwf0p4o6hjvp
+ERROR:  table "current_day_attendance" does not exist
+STATEMENT:  drop table current_day_attendance cascade
+ERROR:  table "goal" does not exist
+STATEMENT:  drop table goal cascade
+ERROR:  table "goals" does not exist
+STATEMENT:  drop table goals cascade
+ERROR:  table "goals_goal_map" does not exist
+STATEMENT:  drop table goals_goal_map cascade
+ERROR:  table "pace_user" does not exist
+STATEMENT:  drop table pace_user cascade
+ERROR:  table "pace_user_short_team_view_list" does not exist
+STATEMENT:  drop table pace_user_short_team_view_list cascade
+ERROR:  table "pace_user_team_list" does not exist
+STATEMENT:  drop table pace_user_team_list cascade
+ERROR:  table "short_table_row" does not exist
+STATEMENT:  drop table short_table_row cascade
+ERROR:  table "team" does not exist
+STATEMENT:  drop table team cascade
+ERROR:  table "team_current_month_attendance" does not exist
+STATEMENT:  drop table team_current_month_attendance cascade
+ERROR:  table "team_full_scores_table_list" does not exist
+STATEMENT:  drop table team_full_scores_table_list cascade
+ERROR:  table "team_short_table_row_list" does not exist
+STATEMENT:  drop table team_short_table_row_list cascade
+ERROR:  sequence "hibernate_sequence" does not exist
+STATEMENT:  drop sequence hibernate_sequence

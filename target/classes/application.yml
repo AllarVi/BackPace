@@ -1,8 +1,8 @@
 spring:
     datasource:
         password: ucJMCWgUikBdIiJklALR00G8ilTeDNzM
-        url: jdbc:postgresql://localhost:5432/backpacedb1
-        username: allar
+        url: jdbc:postgresql://localhost:5432/allarviinamae
+        username: allarviinamae
     jpa:
         hibernate:
             ddl-auto: create
@@ -13,3 +13,8 @@ spring:
         facebook:
             app-id: 269321573400083
             app-secret: 18f4b0c8f3bf178842f92f73b2fc12a4
+
+logging:
+    file: logs.txt
+server:
+  port: 8181

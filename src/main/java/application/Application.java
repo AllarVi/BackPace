@@ -32,7 +32,7 @@ public class Application {
     private static final String HTTP_GRAPH_FACEBOOK_COM_ALLAR_PICTURE_TYPE_LARGE = "http://graph.facebook" + "" +
             ".com/1273703759309879/picture?type=large";
     private static final String ALLAR_ACCESS_TOKEN =
-            "EAAD08lC2fhMBAIWW7X6j85X0s8IREqlmaXlV47g5NZBOsk22L616ooPDtmUCD7Rup7vVkmKAFP5k5y5zNbf0ZBZB0XGU2fbvaUx7uUxLfY3lStaOyCoo3SiVn9kNGTW5NIon6JC2BNspoLex6NfCBZBkgEZCAyfn0JbICsgpuLu0FTO2zcEsiULORo2nnZBLMZD";
+            "EAAD08lC2fhMBACwwwp8S5wIIKVI7kGaxDd1Reddwmd8rVNXwp7RhR4K2ZCZAl8iegIFZAedy32wod80kk1HN2Ki19ZADUPRSW3l16MvmChZAjATzK6tOAJTeuBShYmVL7T86haatcHQ9gjuyGe6TDRrQvZBsSZAXn5FRzWjGpQP7ZCLsEBZA2UVCIhxzVvpXcDb0ZD";
 
     private static final String ALLAR_USER_ID = "1273703759309879";
 

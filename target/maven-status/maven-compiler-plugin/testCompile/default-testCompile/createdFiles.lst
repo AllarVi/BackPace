@@ -1,6 +1,8 @@
-application/AbstractControllerTest.class
+application/BaseControllerTest.class
 application/user/UserControllerMocksTest.class
-application/user/UserRepositoryTest.class
 application/AbstractTest.class
 application/profile/ProfileControllerMocksTest.class
 application/user/UserControllerTest.class
+application/AbstractControllerTest.class
+application/user/UserRepositoryTest.class
+application/dashboard/DashboardControllerTest.class

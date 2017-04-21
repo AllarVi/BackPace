@@ -3,4 +3,6 @@
 /Users/allarviinamae/Workspace/BackPaceV2/src/test/java/application/user/UserControllerMocksTest.java
 /Users/allarviinamae/Workspace/BackPaceV2/src/test/java/application/user/UserControllerTest.java
 /Users/allarviinamae/Workspace/BackPaceV2/src/test/java/application/profile/ProfileControllerMocksTest.java
+/Users/allarviinamae/Workspace/BackPaceV2/src/test/java/application/dashboard/DashboardControllerTest.java
 /Users/allarviinamae/Workspace/BackPaceV2/src/test/java/application/user/UserRepositoryTest.java
+/Users/allarviinamae/Workspace/BackPaceV2/src/test/java/application/BaseControllerTest.java

@@ -43,7 +43,7 @@ public class BaseController {
         try {
             return facebookConnectionFactory.createConnection(accessGrant);
         } catch (Exception e) {
-            logger.error("Failed connecting to Facebook!");
+            logger.error("Failed connecting to Facebook!", e);
             return null;
         }
     }

@@ -2,10 +2,15 @@
 <project version="4">
   <component name="dataSourceStorageLocal">
     <data-source name="PostgreSQL - backpacedb1@localhost" uuid="906a6f42-f16a-4156-8368-ff7c9393e542">
+      <database-info product="PostgreSQL" version="9.6.2" jdbc-version="4.0" driver-name="PostgreSQL Native Driver" driver-version="PostgreSQL 9.4 JDBC4 (build 1201)">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
       <secret-storage>master_key</secret-storage>
-      <user-name>allar</user-name>
-      <schema-pattern>backpacedb1.pg_catalog backpacedb1.public</schema-pattern>
-      <default-schemas>backpacedb1.public</default-schemas>
+      <user-name>allarviinamae</user-name>
+      <introspection-schemas>backpacedb1:pg_catalog,public</introspection-schemas>
+      <resolve-scope>backpacedb1:public</resolve-scope>
+      <unqualified-resolve-schemas>backpacedb1:public</unqualified-resolve-schemas>
     </data-source>
   </component>
 </project>
