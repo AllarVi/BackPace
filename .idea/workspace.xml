@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6aa16473-7186-4e9e-ae34-01436127ddd8" name="Default" comment="feat(PaceUser.class): added user's possible sex values">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/application/team/Date.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/application/team/DateRepository.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/application/team/MarkAttendanceData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/application/Application$1.class" afterPath="$PROJECT_DIR$/target/classes/application/Application$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/application/Application.class" afterPath="$PROJECT_DIR$/target/classes/application/Application.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/application/team/CurrentDayAttendance.class" afterPath="$PROJECT_DIR$/target/classes/application/team/CurrentDayAttendance.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/application/team/TeamController.class" afterPath="$PROJECT_DIR$/target/classes/application/team/TeamController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logfile" afterPath="$PROJECT_DIR$/logfile" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs.txt" afterPath="$PROJECT_DIR$/logs.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/application/Application.java" afterPath="$PROJECT_DIR$/src/main/java/application/Application.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/application/team/CurrentDayAttendance.java" afterPath="$PROJECT_DIR$/src/main/java/application/team/CurrentDayAttendance.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/application/team/TeamController.java" afterPath="$PROJECT_DIR$/src/main/java/application/team/TeamController.java" />
     </list>
     <ignored path="BackPaceV2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1591,7 +1579,7 @@
       <workItem from="1465243855487" duration="2561000" />
       <workItem from="1465451691056" duration="148000" />
       <workItem from="1465493114937" duration="1616000" />
-      <workItem from="1492789532485" duration="15312000" />
+      <workItem from="1492789532485" duration="16281000" />
     </task>
     <task id="LOCAL-00001" summary="Checkpoint: Working on backend part of Facebook authentication. Added RestController for PaceUser.">
       <created>1461523293397</created>
@@ -1727,7 +1715,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="195353000" />
+    <option name="totallyTimeSpent" value="196322000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="6" />
