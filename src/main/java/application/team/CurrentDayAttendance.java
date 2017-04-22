@@ -1,13 +1,12 @@
 package application.team;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 /**
  * Created by allarviinamae on 22/05/16.
- *
+ * <p>
  * Info for the attendance chart on team view.
  */
 @Entity
@@ -17,27 +16,24 @@ public class CurrentDayAttendance {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    private String date;
-
     private Integer maleAttendees;
 
     private Integer femaleAttendees;
 
+    @OneToOne
+    private Date _date_;
+
+    private ArrayList<String> attendees;
+
     public CurrentDayAttendance() {
     }
 
-    public CurrentDayAttendance(String date, Integer maleAttendees, Integer femaleAttendees) {
-        this.date = date;
+    public CurrentDayAttendance(Integer maleAttendees, Integer femaleAttendees, Date _date_) {
+        this.attendees = new ArrayList<>();
+
         this.maleAttendees = maleAttendees;
         this.femaleAttendees = femaleAttendees;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
+        this._date_ = _date_;
     }
 
     public Integer getMaleAttendees() {
@@ -54,5 +50,21 @@ public class CurrentDayAttendance {
 
     public void setFemaleAttendees(Integer femaleAttendees) {
         this.femaleAttendees = femaleAttendees;
+    }
+
+    public Date get_date_() {
+        return _date_;
+    }
+
+    public void set_date_(Date _date_) {
+        this._date_ = _date_;
+    }
+
+    public ArrayList<String> getAttendees() {
+        return attendees;
+    }
+
+    public void setAttendees(ArrayList<String> attendees) {
+        this.attendees = attendees;
     }
 }

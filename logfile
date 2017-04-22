@@ -69,3 +69,5 @@ ERROR:  table "team_short_table_row_list" does not exist
 STATEMENT:  drop table team_short_table_row_list cascade
 ERROR:  sequence "hibernate_sequence" does not exist
 STATEMENT:  drop sequence hibernate_sequence
+ERROR:  table "date" does not exist
+STATEMENT:  drop table date cascade

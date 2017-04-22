@@ -52,7 +52,7 @@ public class Application {
     public CommandLineRunner user(UserRepository userRepository, ShortTableRowRepository shortTableRowRepository,
                                   GoalRepository goalRepository, GoalsRepository goalsRepository, TeamRepository
                                               teamRepository, CurrentDayAttendanceRepository
-                                              currentDayAttendanceRepository) {
+                                              currentDayAttendanceRepository, DateRepository dateRepository) {
         return (args) -> {
             createFileUploadDirectory();
 
@@ -120,8 +120,13 @@ public class Application {
             teamSaltopoisid.setFullScoresTableList(shortTableRowsSaltopoisid);
 
 //            @@@@@ initAttendance @@@@@
-            CurrentDayAttendance currentDayAttendance = new CurrentDayAttendance("21", 2, 5);
-            CurrentDayAttendance currentDayAttendance2 = new CurrentDayAttendance("20", 10, 5);
+            Date date = new Date("20", "4", "2017");
+            dateRepository.save(date);
+            Date date2 = new Date("21", "4", "2017");
+            dateRepository.save(date2);
+
+            CurrentDayAttendance currentDayAttendance = new CurrentDayAttendance(2, 5, date);
+            CurrentDayAttendance currentDayAttendance2 = new CurrentDayAttendance(10, 5, date2);
             currentDayAttendanceRepository.save(currentDayAttendance);
             currentDayAttendanceRepository.save(currentDayAttendance2);
 
