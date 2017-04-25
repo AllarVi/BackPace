@@ -71,3 +71,7 @@ ERROR:  sequence "hibernate_sequence" does not exist
 STATEMENT:  drop sequence hibernate_sequence
 ERROR:  table "date" does not exist
 STATEMENT:  drop table date cascade
+FATAL:  role "allar" does not exist
+FATAL:  role "allar" does not exist
+FATAL:  role "allar" does not exist
+FATAL:  role "allar" does not exist

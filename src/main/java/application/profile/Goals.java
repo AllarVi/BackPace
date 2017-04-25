@@ -1,6 +1,7 @@
 package application.profile;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -10,7 +11,7 @@ import java.util.Map;
  * Represents all of users sports related Goals
  */
 @Entity
-public class Goals {
+public class Goals implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

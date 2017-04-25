@@ -60,7 +60,7 @@ public class DashboardController extends BaseController {
         Connection<Facebook> connection = getFacebookConnection(token);
 
         if (connection == null) {
-            return new ResponseEntity<>(new PaceUser().getShortTeamViewList(), HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
 
         if (groups.equals("all")) {
@@ -84,24 +84,22 @@ public class DashboardController extends BaseController {
         Connection<Facebook> connection = getFacebookConnection(token);
 
         if (connection == null) {
-            return new ResponseEntity<>(new PaceUser().getShortTeamViewList(), HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
 
         try {
             TeamData teamData = mapFromJson(teamDataInput, TeamData.class);
 
             Team team = teamRepository.findOne(teamData.getTeamId());
-
             PaceUser paceUser = userRepository.findByFacebookId(facebookId);
 
             // Add user to selected team!
             addUserToTeam(team, paceUser);
 
-            List<Team> shortTeamViews = paceUser.getTeamList();
+            List<Team> teamList = paceUser.getTeamList();
+            teamList.add(team);
 
-            shortTeamViews.add(team);
-
-            paceUser.setTeamList(shortTeamViews);
+            paceUser.setTeamList(teamList);
 
             userRepository.save(paceUser);
 
@@ -115,13 +113,13 @@ public class DashboardController extends BaseController {
     }
 
     private void addUserToTeam(Team team, PaceUser paceUser) {
-        List<ShortTableRow> shortTableRowList = team.getFullScoresTableList();
+        List<ShortTableRow> fullScoresTableList = team.getFullScoresTableList();
 
-        ShortTableRow shortTableRow = new ShortTableRow(0, paceUser.getName(), "", 0);
+        ShortTableRow shortTableRow = new ShortTableRow(0, paceUser.getName(), "", 0, paceUser.getFacebookId());
         shortTableRowRepository.save(shortTableRow);
 
-        shortTableRowList.add(shortTableRow);
+        fullScoresTableList.add(shortTableRow);
 
-        team.setFullScoresTableList(shortTableRowList);
+        team.setFullScoresTableList(fullScoresTableList);
     }
 }

@@ -1,7 +1,6 @@
 package application.user;
 
 import application.profile.Goals;
-import application.team.ShortTeamView;
 import application.team.Team;
 
 import javax.persistence.*;
@@ -24,9 +23,6 @@ public class PaceUser implements Serializable {
     private String picture;
 
     private String accessToken;
-
-    @ElementCollection
-    private List<ShortTeamView> shortTeamViewList;
 
     @OneToOne
     private Goals goals;
@@ -96,14 +92,6 @@ public class PaceUser implements Serializable {
 
     public void setAccessToken(String accessToken) {
         this.accessToken = accessToken;
-    }
-
-    public List<ShortTeamView> getShortTeamViewList() {
-        return shortTeamViewList;
-    }
-
-    public void setShortTeamViewList(List<ShortTeamView> shortTeamViewList) {
-        this.shortTeamViewList = shortTeamViewList;
     }
 
     public Goals getGoals() {
