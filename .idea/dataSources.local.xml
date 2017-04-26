@@ -8,7 +8,7 @@
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
       <secret-storage>master_key</secret-storage>
       <user-name>allarviinamae</user-name>
-      <introspection-schemas>backpacedb1:pg_catalog,public</introspection-schemas>
+      <introspection-schemas>allarviinamae:|backpacedb1:pg_catalog,public</introspection-schemas>
       <resolve-scope>backpacedb1:public</resolve-scope>
       <unqualified-resolve-schemas>backpacedb1:public</unqualified-resolve-schemas>
     </data-source>
