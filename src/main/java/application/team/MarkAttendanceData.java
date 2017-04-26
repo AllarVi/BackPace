@@ -7,11 +7,12 @@ public class MarkAttendanceData {
     public MarkAttendanceData() {
     }
 
-    public MarkAttendanceData(String day, String month, String year, String member) {
+    public MarkAttendanceData(String day, String month, String year, String member, String facebookId) {
         this.day = day;
         this.month = month;
         this.year = year;
         this.member = member;
+        this.facebookId = facebookId;
     }
 
     @JsonProperty("day")
@@ -25,6 +26,9 @@ public class MarkAttendanceData {
 
     @JsonProperty("member")
     private String member;
+
+    @JsonProperty("facebookId")
+    private String facebookId;
 
     public String getDay() {
         return day;
@@ -56,5 +60,13 @@ public class MarkAttendanceData {
 
     public void setMember(String member) {
         this.member = member;
+    }
+
+    public String getFacebookId() {
+        return facebookId;
+    }
+
+    public void setFacebookId(String facebookId) {
+        this.facebookId = facebookId;
     }
 }

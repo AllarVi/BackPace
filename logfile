@@ -75,3 +75,11 @@ FATAL:  role "allar" does not exist
 FATAL:  role "allar" does not exist
 FATAL:  role "allar" does not exist
 FATAL:  role "allar" does not exist
+ERROR:  relation "current_day_attendance_attendees" does not exist
+STATEMENT:  alter table current_day_attendance_attendees drop constraint if exists FK_j9p34uvxjk3elkxpq2kot6w0j
+ERROR:  relation "current_day_attendance_attendees" does not exist
+STATEMENT:  alter table current_day_attendance_attendees drop constraint if exists FK_jhrcmv3u1bnfw1yfyhhs68ki7
+ERROR:  table "attendee" does not exist
+STATEMENT:  drop table attendee cascade
+ERROR:  table "current_day_attendance_attendees" does not exist
+STATEMENT:  drop table current_day_attendance_attendees cascade

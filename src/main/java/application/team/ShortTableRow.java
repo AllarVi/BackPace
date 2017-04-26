@@ -1,8 +1,9 @@
 package application.team;
 
-import application.user.PaceUser;
-
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
@@ -25,7 +26,7 @@ public class ShortTableRow implements Serializable {
 
     private Integer points;
 
-    private String paceUserFacebookId;
+    private String facebookId;
 
     public ShortTableRow(Integer rank, String userName, String tier, Integer points) {
         this.rank = rank;
@@ -34,12 +35,12 @@ public class ShortTableRow implements Serializable {
         this.points = points;
     }
 
-    public ShortTableRow(Integer rank, String userName, String tier, Integer points, String paceUserFacebookId) {
+    public ShortTableRow(Integer rank, String userName, String tier, Integer points, String facebookId) {
         this.rank = rank;
         this.userName = userName;
         this.tier = tier;
         this.points = points;
-        this.paceUserFacebookId = paceUserFacebookId;
+        this.facebookId = facebookId;
     }
 
     public ShortTableRow() {
@@ -77,11 +78,11 @@ public class ShortTableRow implements Serializable {
         this.rank = rank;
     }
 
-    public String getPaceUserFacebookId() {
-        return paceUserFacebookId;
+    public String getFacebookId() {
+        return facebookId;
     }
 
-    public void setPaceUserFacebookId(String paceUserFacebookId) {
-        this.paceUserFacebookId = paceUserFacebookId;
+    public void setFacebookId(String facebookId) {
+        this.facebookId = facebookId;
     }
 }

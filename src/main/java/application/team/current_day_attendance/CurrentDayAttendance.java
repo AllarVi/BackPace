@@ -1,8 +1,11 @@
-package application.team;
+package application.team.current_day_attendance;
+
+import application.team.Date;
+import application.team.attendee.Attendee;
 
 import javax.persistence.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by allarviinamae on 22/05/16.
@@ -23,7 +26,8 @@ public class CurrentDayAttendance {
     @OneToOne
     private Date _date_;
 
-    private ArrayList<String> attendees;
+    @ElementCollection
+    private List<Attendee> attendees;
 
     public CurrentDayAttendance() {
     }
@@ -60,11 +64,11 @@ public class CurrentDayAttendance {
         this._date_ = _date_;
     }
 
-    public ArrayList<String> getAttendees() {
+    public List<Attendee> getAttendees() {
         return attendees;
     }
 
-    public void setAttendees(ArrayList<String> attendees) {
+    public void setAttendees(List<Attendee> attendees) {
         this.attendees = attendees;
     }
 }

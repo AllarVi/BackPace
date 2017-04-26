@@ -1,5 +1,7 @@
 package application.team;
 
+import application.team.current_day_attendance.CurrentDayAttendance;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;

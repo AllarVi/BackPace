@@ -5,6 +5,8 @@ import application.profile.GoalRepository;
 import application.profile.Goals;
 import application.profile.GoalsRepository;
 import application.team.*;
+import application.team.current_day_attendance.CurrentDayAttendance;
+import application.team.current_day_attendance.CurrentDayAttendanceRepository;
 import application.user.PaceUser;
 import application.user.UserRepository;
 import org.slf4j.Logger;

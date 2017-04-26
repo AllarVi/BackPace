@@ -1,6 +1,10 @@
 package application.team;
 
 import application.BaseController;
+import application.team.attendee.Attendee;
+import application.team.attendee.AttendeeRepository;
+import application.team.current_day_attendance.CurrentDayAttendance;
+import application.team.current_day_attendance.CurrentDayAttendanceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,7 +12,6 @@ import org.springframework.social.connect.Connection;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,6 +32,9 @@ public class TeamController extends BaseController {
 
     @Autowired
     DateRepository dateRepository;
+
+    @Autowired
+    AttendeeRepository attendeeRepository;
 
     @RequestMapping(value = "/api/team")
     public ResponseEntity<Object> getTeamData(@RequestParam(value = FACEBOOK_ID) String facebookId, @RequestParam
@@ -70,12 +76,10 @@ public class TeamController extends BaseController {
                     }
                 }
                 if (!isCurrentDayFound) {
-                    createNewCurrentDayAttendance(currentMonthAttendanceList,
-                            markAttendanceData);
+                    createNewCurrentDayAttendance(currentMonthAttendanceList, markAttendanceData);
                 }
             } else {
-                createNewCurrentDayAttendance(currentMonthAttendanceList,
-                        markAttendanceData);
+                createNewCurrentDayAttendance(currentMonthAttendanceList, markAttendanceData);
             }
 
             // Update currentMonthAttendanceList
@@ -89,8 +93,11 @@ public class TeamController extends BaseController {
 
     private void addAttendingMember(@RequestBody MarkAttendanceData markAttendanceData, CurrentDayAttendance
             currentDayAttendance) {
-        ArrayList<String> attendees = currentDayAttendance.getAttendees();
-        attendees.add(markAttendanceData.getMember());
+        List<Attendee> attendees = currentDayAttendance.getAttendees();
+        Attendee attendee = new Attendee(markAttendanceData.getMember(), markAttendanceData.getFacebookId());
+        attendeeRepository.save(attendee);
+
+        attendees.add(attendee);
         currentDayAttendance.setAttendees(attendees);
     }
 
