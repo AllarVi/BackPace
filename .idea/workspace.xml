@@ -2,26 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6aa16473-7186-4e9e-ae34-01436127ddd8" name="Default" comment="feat(PaceUser.class): added user's possible sex values">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/application/team/attendee/Attendee.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/application/team/attendee/AttendeeRepository.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/application/team/CurrentDayAttendance.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/application/team/CurrentDayAttendanceRepository.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/application/team/TeamController.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/application/team/CurrentDayAttendance.java" afterPath="$PROJECT_DIR$/src/main/java/application/team/current_day_attendance/CurrentDayAttendance.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/application/team/CurrentDayAttendanceRepository.java" afterPath="$PROJECT_DIR$/src/main/java/application/team/current_day_attendance/CurrentDayAttendanceRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/application/Application$1.class" afterPath="$PROJECT_DIR$/target/classes/application/Application$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/application/Application.class" afterPath="$PROJECT_DIR$/target/classes/application/Application.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/application/team/MarkAttendanceData.class" afterPath="$PROJECT_DIR$/target/classes/application/team/MarkAttendanceData.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/application/team/ShortTableRow.class" afterPath="$PROJECT_DIR$/target/classes/application/team/ShortTableRow.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/application/team/Team.class" afterPath="$PROJECT_DIR$/target/classes/application/team/Team.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logfile" afterPath="$PROJECT_DIR$/logfile" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs.txt" afterPath="$PROJECT_DIR$/logs.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/application/Application.java" afterPath="$PROJECT_DIR$/src/main/java/application/Application.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/application/team/MarkAttendanceData.java" afterPath="$PROJECT_DIR$/src/main/java/application/team/MarkAttendanceData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/application/team/ShortTableRow.java" afterPath="$PROJECT_DIR$/src/main/java/application/team/ShortTableRow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/application/team/Team.java" afterPath="$PROJECT_DIR$/src/main/java/application/team/Team.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/application/team/TeamController.java" afterPath="$PROJECT_DIR$/src/main/java/application/team/TeamController.java" />
     </list>
     <ignored path="BackPaceV2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -62,6 +44,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Application.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/application/Application.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="205" column="79" lean-forward="false" selection-start-line="205" selection-start-column="79" selection-end-line="205" selection-end-column="79" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="TeamController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/application/team/TeamController.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -107,11 +99,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CurrentDayAttendance.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CurrentDayAttendance.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/application/team/current_day_attendance/CurrentDayAttendance.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="73">
-              <caret line="26" column="24" lean-forward="true" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
+            <state relative-caret-position="270">
+              <caret line="18" column="51" lean-forward="false" selection-start-line="18" selection-start-column="51" selection-end-line="18" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -231,7 +223,6 @@
         <option value="$PROJECT_DIR$/src/main/java/application/BaseController.java" />
         <option value="$PROJECT_DIR$/src/main/java/application/user/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/application/team/DateRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/application/Application.java" />
         <option value="$PROJECT_DIR$/src/main/java/application/user/PaceUser.java" />
         <option value="$PROJECT_DIR$/src/main/java/application/team/Date.java" />
         <option value="$PROJECT_DIR$/src/main/java/application/profile/Goals.java" />
@@ -245,6 +236,7 @@
         <option value="$PROJECT_DIR$/src/main/java/application/team/attendee/AttendeeRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/application/team/TeamController.java" />
         <option value="$PROJECT_DIR$/src/main/java/application/team/ShortTableRow.java" />
+        <option value="$PROJECT_DIR$/src/main/java/application/Application.java" />
       </list>
     </option>
   </component>
@@ -1692,7 +1684,7 @@
       <workItem from="1465243855487" duration="2561000" />
       <workItem from="1465451691056" duration="148000" />
       <workItem from="1465493114937" duration="1616000" />
-      <workItem from="1492789532485" duration="30538000" />
+      <workItem from="1492789532485" duration="33292000" />
     </task>
     <task id="LOCAL-00001" summary="Checkpoint: Working on backend part of Facebook authentication. Added RestController for PaceUser.">
       <created>1461523293397</created>
@@ -1828,10 +1820,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="210579000" />
+    <option name="totallyTimeSpent" value="213333000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="800" extended-state="6" />
+    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -2122,14 +2114,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/application/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="125" column="39" lean-forward="false" selection-start-line="125" selection-start-column="39" selection-end-line="125" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/application/user/Sex.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -2310,11 +2294,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/application/team/current_day_attendance/CurrentDayAttendance.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="26" column="24" lean-forward="true" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
+        <state relative-caret-position="270">
+          <caret line="18" column="51" lean-forward="false" selection-start-line="18" selection-start-column="51" selection-end-line="18" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/application/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="205" column="79" lean-forward="false" selection-start-line="205" selection-start-column="79" selection-end-line="205" selection-end-column="79" />
+          <folding />
         </state>
       </provider>
     </entry>

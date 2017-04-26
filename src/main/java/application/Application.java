@@ -205,7 +205,7 @@ public class Application {
     private ArrayList<ShortTableRow> getShortTableRowsKossyryhm(ShortTableRowRepository shortTableRowRepository) {
         ShortTableRow shortTableRow1 = new ShortTableRow(1, "Marin", "Gold", 1270);
         ShortTableRow shortTableRow2 = new ShortTableRow(2, "Marianne", "Gold", 1250);
-        ShortTableRow shortTableRow3 = new ShortTableRow(3, "Maarika", "Gold", 1900);
+        ShortTableRow shortTableRow3 = new ShortTableRow(3, "Britta", "Gold", 1900);
 
         ArrayList<ShortTableRow> shortTableRows = new ArrayList<>();
         shortTableRows.add(shortTableRow1);
@@ -218,12 +218,10 @@ public class Application {
     }
 
     private ArrayList<ShortTableRow> getShortTableRowsSaltopoisid(ShortTableRowRepository shortTableRowRepository) {
-        ShortTableRow shortTableRow1 = new ShortTableRow(1, "Allar", "Gold", 1000);
-        ShortTableRow shortTableRow2 = new ShortTableRow(2, "Rannar", "Gold", 980);
-        ShortTableRow shortTableRow3 = new ShortTableRow(3, "Üllar", "Gold", 950);
+        ShortTableRow shortTableRow2 = new ShortTableRow(2, "Georg", "Gold", 980);
+        ShortTableRow shortTableRow3 = new ShortTableRow(3, "Mario", "Gold", 950);
 
         ArrayList<ShortTableRow> shortTableRows = new ArrayList<>();
-        shortTableRows.add(shortTableRow1);
         shortTableRows.add(shortTableRow2);
         shortTableRows.add(shortTableRow3);
 
